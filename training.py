@@ -8,7 +8,7 @@ from transformers import WhisperProcessor, WhisperForConditionalGeneration
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
 
-model_id = "openai/whisper-large-v2"
+model_id = "Mollel/ASR-Swahili-Small"
 
 processor = WhisperProcessor.from_pretrained(model_id, language="sw", task="transcribe")
 
@@ -74,5 +74,5 @@ for i, sample in enumerate(ds):
         pd.DataFrame(results).to_csv(f"submission_partial_{i+1}.csv", index=False)
         print(f"Auto-saved at {i+1} samples")
 
-pd.DataFrame(results).to_csv("", index=False) # add the path
-print("saved as 'submission_whisper_large.csv'")
+pd.DataFrame(results).to_csv("", index=False) #add the path
+print("Done! Final submission saved.")
